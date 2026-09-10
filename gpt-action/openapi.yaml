@@ -4,7 +4,7 @@ info:
   version: 0.1.0
   description: Read-only access to RAGFlow datasets and retrieval for a custom GPT Action.
 servers:
-  - url: https://api.rag.xmyy239.com
+  - url: https://api.xmyy239.com
 security:
   - bearerAuth: []
 paths:
