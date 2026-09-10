@@ -1,12 +1,19 @@
-rag.example.com {
+rag-api.121-89-95-250.sslip.io {
     encode zstd gzip
 
-    @rag_api path \
-        /api/v1/datasets \
-        /api/v1/datasets/* \
-        /api/v1/retrieval
+    @datasets {
+        method GET
+        path /api/v1/datasets
+    }
+    handle @datasets {
+        reverse_proxy 127.0.0.1:9380
+    }
 
-    handle @rag_api {
+    @retrieval {
+        method POST
+        path /api/v1/retrieval
+    }
+    handle @retrieval {
         reverse_proxy 127.0.0.1:9380
     }
 
