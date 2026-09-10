@@ -1,0 +1,16 @@
+rag.example.com {
+    encode zstd gzip
+
+    @rag_api path \
+        /api/v1/datasets \
+        /api/v1/datasets/* \
+        /api/v1/retrieval
+
+    handle @rag_api {
+        reverse_proxy 127.0.0.1:9380
+    }
+
+    handle {
+        respond "Not Found" 404
+    }
+}
