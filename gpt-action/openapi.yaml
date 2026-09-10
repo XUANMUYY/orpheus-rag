@@ -4,7 +4,7 @@ info:
   version: 0.1.0
   description: Read-only access to RAGFlow datasets and retrieval for a custom GPT Action.
 servers:
-  - url: https://rag.example.com
+  - url: https://rag-api.121-89-95-250.sslip.io
 security:
   - bearerAuth: []
 paths:
