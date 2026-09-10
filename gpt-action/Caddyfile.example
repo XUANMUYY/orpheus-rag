@@ -1,4 +1,4 @@
-rag-api.121-89-95-250.sslip.io {
+http://127.0.0.1:8082 {
     encode zstd gzip
 
     @datasets {
