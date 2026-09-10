@@ -1,0 +1,20 @@
+{
+  "name": "orpheus-rag",
+  "version": "0.1.0",
+  "description": "Read-only private knowledge retrieval from the user's Orpheus RAGFlow instance.",
+  "repository": "https://github.com/XUANMUYY/orpheus-rag",
+  "keywords": ["rag", "knowledge-base", "retrieval", "ragflow"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Orpheus RAG",
+    "shortDescription": "Search the private Orpheus knowledge base on demand.",
+    "longDescription": "A read-only plugin for explicitly requested retrieval from the user's private RAGFlow knowledge base. It lists available datasets and retrieves source chunks without exposing database administration or write operations.",
+    "developerName": "XUANMUYY",
+    "category": "Productivity",
+    "capabilities": ["Read"],
+    "defaultPrompt": [
+      "Search my Orpheus knowledge base for this question.",
+      "Verify this against my private RAG documents and cite the source chunks."
+    ]
+  }
+}
