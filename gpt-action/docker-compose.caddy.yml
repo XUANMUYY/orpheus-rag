@@ -1,0 +1,10 @@
+services:
+  caddy:
+    image: caddy:2.11.4-alpine
+    container_name: orpheus-caddy
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /opt/orpheus-rag/configs/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /data/orpheus-rag/persistent/caddy/data:/data
+      - /data/orpheus-rag/persistent/caddy/config:/config
