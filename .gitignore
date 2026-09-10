@@ -1,0 +1,41 @@
+# Secrets
+.env
+.env.*
+!.env.example
+secrets.env
+*.key
+*.pem
+
+# Runtime data / backups
+data/
+backup/
+backups/
+persistent/
+
+# Model weights and caches
+models/
+.cache/
+huggingface/
+modelscope/
+*.safetensors
+*.bin
+*.gguf
+
+# Logs / temporary files
+logs/
+tmp/
+*.log
+
+# Docker / exported images
+*.tar
+*.tar.gz
+*.tgz
+*.oci
+
+# Python / editor / OS
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
