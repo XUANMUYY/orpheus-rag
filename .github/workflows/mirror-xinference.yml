@@ -1,0 +1,42 @@
+name: Mirror Xinference to GHCR
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_tag:
+        description: Docker Hub Xinference tag to mirror
+        required: true
+        default: v3.3.0
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install skopeo
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y skopeo
+
+      - name: Mirror linux/amd64 image to GHCR
+        env:
+          SOURCE_TAG: ${{ inputs.source_tag }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          OWNER="$(printf '%s' "$GITHUB_REPOSITORY_OWNER" | tr '[:upper:]' '[:lower:]')"
+          SRC="docker://docker.io/xprobe/xinference:${SOURCE_TAG}"
+          DST="docker://ghcr.io/${OWNER}/xinference:${SOURCE_TAG}"
+
+          echo "Mirroring ${SRC} -> ${DST}"
+
+          skopeo copy \
+            --override-os linux \
+            --override-arch amd64 \
+            --dest-creds "${GITHUB_ACTOR}:${GHCR_TOKEN}" \
+            "$SRC" "$DST"
+
+          echo "Mirrored image: ghcr.io/${OWNER}/xinference:${SOURCE_TAG}"
